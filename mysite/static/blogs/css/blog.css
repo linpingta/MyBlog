@@ -1,0 +1,26 @@
+.m-blog-title,
+.m-blog-word,
+.m-blog-sidebar{
+    background-color: #FFFFFF;
+    color: #000000;
+    font-family: 'times new roman';
+    font-weight: bold;
+    font-size: x-large;
+    font-variant: normal;
+    border-radius: 2px;
+}
+
+.m-blog-title{
+    margin: 20px;
+    font-size: 30px;
+}
+
+.m-blog-word{
+    font-size: large;
+}
+
+.m-blog-sidebar{
+    margin: 20px;
+    font-size: 10px;
+    float:right;
+}

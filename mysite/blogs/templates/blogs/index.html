@@ -1,0 +1,40 @@
+{% extends 'lib/base.html' %}
+{% load staticfiles %}
+
+{% block ext_css %}
+<link rel="stylesheet" type="text/css" href="{% static "blogs/css/blog.css" %}">
+{% endblock ext_css%}
+
+{% block content %}
+<div class="row">
+    <h1 class="m-blog-title">博客列表</h1>
+    {% for blog in blogs %}
+    <div>
+    <ul class="m-blog-word">
+    <li><a href="{% url 'blog' blog.title %}">{{blog.title}}</a></li>
+    </ul>
+    <ul class="m-blog-desc">
+    <li><small>
+	{% for tag in blog.tags.all %}
+	<a href="{% url 'blog_tag' tag.name %}">{{tag.name}}</a>
+	{% if not forloop.last %},{% endif %}
+	{% endfor %}
+    </small></li>
+    <li><small>发布于{{blog.pub_date}}</small></li>
+    <br/>
+    </ul>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}
+
+{% block sidebar %}
+<div class="row">
+    <h2 class="m-blog-sidebar">标签</h2>
+    <ul class="m-sidebar-desc">
+    {% for tag in tags %}
+	<li><a href="{% url 'blog_tag' tag.name %}">{{tag.name}}({{tag.count}})</a></li>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock sidebar %}

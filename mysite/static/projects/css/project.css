@@ -1,0 +1,26 @@
+.m-project-title,
+.m-project-word,
+.m-project-sidebar{
+    background-color: #FFFFFF;
+    color: #000000;
+    font-family: 'times new roman';
+    font-weight: bold;
+    font-size: x-large;
+    font-variant: normal;
+    border-radius: 2px;
+}
+
+.m-project-title{
+    margin: 20px;
+    font-size: 30px;
+}
+
+.m-project-word{
+    font-size: large;
+}
+
+.m-project-sidebar{
+    margin: 20px;
+    font-size: 10px;
+    float:right;
+}

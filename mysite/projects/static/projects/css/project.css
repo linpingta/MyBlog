@@ -1,0 +1,50 @@
+.m-project-title,
+.m-project-word,
+.m-project-sidebar{
+    background-color: #FFFFFF;
+    color: #000000;
+    font-family: 'times new roman';
+    font-weight: bold;
+    font-size: x-large;
+    font-variant: normal;
+    border-radius: 2px;
+    color:#0C3C26;
+}
+
+.m-project-title,
+.m-project-title-detail{
+    font-size: 30px;
+    font-variant: normal;
+    border-radius: 2px;
+    color:#0C3C26;
+}
+.m-project-title{
+    margin: 20px;
+}
+
+.m-project-word{
+    font-size: large;
+}
+.m-project-word li{
+    margin-left: 10px;
+    display: inline-block;
+}
+.m-project-word a{
+    color:#44B78B;
+    text-decoration: none;
+}
+
+.m-project-sidebar{
+    font-size: large;
+    margin: 20px;
+    float:right;
+}
+.m-project-sidebar a{
+    color:#44B78B;
+    text-decoration: none;
+}
+
+.m-project-word-detail{
+    font-size: large;
+    margin: 20px;
+}

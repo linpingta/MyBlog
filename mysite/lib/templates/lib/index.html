@@ -1,0 +1,30 @@
+{% extends 'lib/base.html' %}
+{% load staticfiles %}
+
+{% block ext_css %}
+<link rel="stylesheet" type="text/css" href="{% static "lib/css/index.css" %}">
+{% endblock ext_css %}
+
+{% block content %}
+<div class="row">
+	<div class="m-index-position-head">
+		<p class="m-index-word">欢迎来到我的博客</p>
+	</div>
+	<div class="m-index-position-body">
+		<p>最近博客</p>
+		<ul>
+		{% for recent_blog in recent_blogs %}
+    		<li><a href="{% url 'blog' recent_blog.title %}">{{recent_blog.title}}</a></li>
+		{% endfor %}
+		</ul>
+	</div>
+	<div class="m-index-position-body">
+		<p>最近项目</p>
+		<ul>
+		{% for recent_project in recent_projects %}
+    		<li><a href="{% url 'project' recent_project.name %}">{{recent_project.name}}</a></li>
+		{% endfor %}
+		</ul>
+	</div>
+</div>
+{% endblock content %}

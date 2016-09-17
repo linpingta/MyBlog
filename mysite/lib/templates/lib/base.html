@@ -1,0 +1,56 @@
+<html>
+    <head>
+        {% load staticfiles %}
+        <link rel="stylesheet" type="text/css" href="{% static "lib/css/base.css" %}">
+        <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        {% block ext_css %}{% endblock ext_css %}
+
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        {% block ext_js %}{% endblock ext_js %}
+
+        <title>{% block title %}褚桐 的博客{% endblock title %}</title>
+    </head>
+    <body>
+            <div class="m-content-wrapper container">
+                <div class="row m-nav-background">
+                    {% block navigation %}
+                    <div class="col-lg-6">    
+                        <p class="m-nav-title"><a href="{% url 'index' %}">褚桐</a><small> 博客</small></p>
+                    </div>
+                    <div class="col-lg-offset-2 col-lg-4">
+                        <ul class="m-nav-modules">
+                            <li><a href="{% url 'index' %}">首页</a></li>
+                            <li><a href="{% url 'blog_index' %}">博客</a></li>
+                            <li><a href="{% url 'project_index' %}">项目</a></li>
+                            <li><a href="{% url 'about'%}">关于</a></li>
+                        </ul>
+                    </div>
+                    {% endblock navigation %}
+                </div>
+                <div class="row">
+                    <div class="col-lg-8">
+                        {% block content %}{% endblock content %}
+                    </div>
+                    <div class="col-lg-4">
+                        {% block sidebar %}{% endblock sidebar %}
+                    </div>
+                </div>
+            </div>
+            <div class="m-footer-wrapper  container">
+		<div class="row  m-footer-background">    
+		    <div class="col-lg-6">
+		    <p class="m-footer-word"><a href="mailto:linpingta@163.com">Email:  linpingta@163.com</a></p>
+		    </div>
+		    <div class="col-lg-6">
+		    <ul class="m-footer-modules">
+			<li> 也可以通过以下网站了解我:</li>
+			<li><a href="https://www.linkedin.com/profile/view?id=AAMAAAUljZEBCwHMcarHoqwvZXfGGVtZ-izWW5s&trk=hp-identity-photo">LinkedIn</a></li>
+			<li><a href="http://github.com/linpingta">Github</a></li>
+			<li><a href="http://stackoverflow.com/users/2279150/linpingta">StackOverflow</a></li>
+		    </ul>
+		    </div>
+		</div>
+            </div>
+    </body>
+</html>

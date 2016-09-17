@@ -1,0 +1,27 @@
+{% extends 'lib/base.html' %}
+{% load staticfiles %}
+
+{% block ext_css %}
+<link rel="stylesheet" type="text/css" href="{% static "blogs/css/blog.css" %}">
+{% endblock%}
+
+{% block content %}
+<div class="row">
+    <p class="m-blog-title">{{ blog.title }}</p>
+    {% comment %}
+    <ul>
+	{% for tag in blog.tags %}
+	<li> {{tag.name}} </li>
+	{% endfor %}
+    </ul>
+    {% endcomment %}
+    <p class="col-lg-offset-8 m-blog-date">发布于{{ blog.pub_date }}</p>
+    <div class="m-blog-word-detail">
+    {{blog.content | safe}}
+    </div>
+</div>
+{% endblock content%}
+
+{% block sidebar %}
+	<p class="m-blog-sidebar-detail"><a href="{% url 'blog_index' %}">回到博客首页</a></p>
+{% endblock sidebar %}

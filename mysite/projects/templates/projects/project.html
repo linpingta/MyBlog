@@ -1,0 +1,24 @@
+{% extends 'lib/base.html' %}
+{% load staticfiles %}
+
+{% block ext_css %}
+<link rel="stylesheet" type="text/css" href="{% static "projects/css/project.css" %}">
+{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="m-project-word-detail">
+	<p class="m-project-title-detail">{{ project.name }}</p>
+	<br/>
+	{{project.desc | safe }}
+	<br/>
+	{% if project.url != "" %}
+	<p class="m-project-word"><a href="{{project.url}}">项目地址</a></p>
+	</div>
+	{% endif %}
+</div>
+{% endblock content%}
+
+{% block sidebar %}
+	<p class="m-project-sidebar"><a href="{% url 'project_index' %}">回到项目首页</a></p>
+{% endblock sidebar %}
