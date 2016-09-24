@@ -14,7 +14,7 @@
 		<p>最近博客</p>
 		<ul>
 		{% for recent_blog in recent_blogs %}
-    		<li><a href="{% url 'blog' recent_blog.title %}">{{recent_blog.title}}</a></li>
+    		<li><a href="{% url 'blog' recent_blog.title %}">{{recent_blog.title}}</a><small>{{recent_blog.pub_date | date:"Y/m/d"}}</small></li>
 		{% endfor %}
 		</ul>
 	</div>
@@ -22,7 +22,7 @@
 		<p>最近项目</p>
 		<ul>
 		{% for recent_project in recent_projects %}
-    		<li><a href="{% url 'project' recent_project.name %}">{{recent_project.name}}</a></li>
+    		<li><a href="{% url 'project' recent_project.name %}">{{recent_project.name}}</a><small>{{recent_project.pub_date | date:"Y/m/d"}}</small></li>
 		{% endfor %}
 		</ul>
 	</div>

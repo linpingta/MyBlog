@@ -13,12 +13,15 @@
 .m-index-position-body p{
     font-size:25px;
 }
-.m-index-position-body ul.li{
-    display: inline-block;
+.m-index-position-body ul > li{
+    list-style-type: none;
 }
-.m-index-position-body ul.a{
+.m-index-position-body ul > a{
     text-decoration:none;
     color:#44B78B;
+}
+.m-index-position-body ul > li > small{
+    margin-left:20px;
 }
 .m-index-word,
 .m-index-position-body{

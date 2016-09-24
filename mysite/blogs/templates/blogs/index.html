@@ -20,7 +20,7 @@
 	{% if not forloop.last %},{% endif %}
 	{% endfor %}
     </small></li>
-    <li><small>发布于{{blog.pub_date}}</small></li>
+    <li><small>发布于 {{blog.pub_date | date:"Y/m/d"}}</small></li>
     <br/>
     </ul>
     </div>
