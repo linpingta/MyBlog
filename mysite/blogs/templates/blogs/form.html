@@ -1,0 +1,5 @@
+<form action="/blogs/search/" method="post">
+    {% csrf_token %}
+    <input id="search_word" type="text" name="search_word" placeholder="search word...">
+    <input type="submit" value="OK">
+</form>

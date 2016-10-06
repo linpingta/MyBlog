@@ -31,6 +31,11 @@
 {% block sidebar %}
 <div class="row">
     <h2 class="m-blog-sidebar">标签</h2>
+    <form class="m-blog-search" action="/blogs/search/" method="post">
+	{% csrf_token %}
+	<input id="search_word" type="text" name="search_word" placeholder="博客标题搜索...">
+	<input type="submit" value="搜索">
+    </form>
     <ul class="m-sidebar-desc">
     {% for tag in tags %}
 	<li><a href="{% url 'blog_tag' tag.name %}">{{tag.name}}({{tag.count}})</a></li>

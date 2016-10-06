@@ -1,11 +1,20 @@
-h2,
-p{
-    background-color: #FFFFFF;
+h2.m-textgraph-title,
+p.m-textgraph-content{
     color: #0C3C26;
     font-family: 'times new roman';
-    font-weight: bold;
-    font-size: 25px;
     font-variant: normal;
     border-radius: 2px;
+}
+
+p.m-textgraph-content{
+    margin-left:20px;
+}
+
+p.m-textgraph-content a{
+    text-decoration:none;
+}
+
+h2.m-textgraph-title{
     text-shadow: 1px 1px 0px #777777;
+    color:#0C3C26;
 }

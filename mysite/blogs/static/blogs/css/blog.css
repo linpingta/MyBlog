@@ -62,6 +62,9 @@
     text-decoration:none;
     color:#44B78B;
 }
+.m-blog-search{
+    margin-left: 40px;
+}
 
 .m-sidebar-desc{
     font-size: large;

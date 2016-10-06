@@ -8,13 +8,20 @@
     text-decoration:none;
 }
 .m-index-position-body{
-    margin-top:40px;
-    text-align:center;
+    margin:20px;
 }
 .m-index-position-body p{
-    font-size:30px;
+    font-size:25px;
 }
-.m-index-word{
+.m-index-position-body ul.li{
+    display: inline-block;
+}
+.m-index-position-body ul.a{
+    text-decoration:none;
+    color:#44B78B;
+}
+.m-index-word,
+.m-index-position-body{
     background-color: #FFFFFF;
     color: #0C3C26;
     font-family: 'times new roman';
@@ -22,6 +29,5 @@
     font-size: 25px;
     font-variant: normal;
     border-radius: 2px;
-    text-shadow: 1px 1px 0px #777777;
 }
 

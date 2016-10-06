@@ -50,14 +50,24 @@ p.m-nav-title a{
 .m-footer-modules{
     list-style-type: none
 }
-.m-nav-modules li,
-.m-footer-modules li{
+.m-nav-modules li{
     float:left;
     font-size: large;
     text-align: center;
 }
-.m-nav-modules li a,
+.m-footer-modules li{
+    float:left;
+    font-size: small;
+    text-align: center;
+}
+.m-nav-modules li a{
+    color:#FFFFFF;
+    display:inline-block;
+    text-align:center;
+    text-decoration:none;
+}
 .m-footer-modules li a{
+    font-size:small;
     color:#FFFFFF;
     display:inline-block;
     text-align:center;
@@ -74,6 +84,18 @@ p.m-nav-title a{
     border-radius: 10px;
 }
 .m-footer-word{
-    font-size: large;
+    font-size: small;
 }
 
+.m-index-position-body p{
+    margin-left: 0px;
+}
+
+.m-index-position-body ul{
+    margin-left: 10px;
+    display: inline-block;
+}
+.m-index-position-body a{
+    text-decoration:none;
+    color:#44B78B;
+}
