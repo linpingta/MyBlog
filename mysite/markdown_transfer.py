@@ -1,24 +1,30 @@
 #-*- coding: utf-8 -*-
 # vim: set bg=dark noet ts=4 sw=4 fdm=indent :
 
-''' transfer Octopress to blog'''
+""" transfer Octopress to blog"""
 
 __author__ = 'linpingta@163.com' 
 
-import os,sys
-os.environ.setdefault(
-	"DJANGO_SETTINGS_MODULE", "mysite.settings"
-)
+import os
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 import subprocess
 import time
 import re
 import logging
 
+os.environ.setdefault(
+	"DJANGO_SETTINGS_MODULE", "mysite.settings"
+)
 import django
 django.setup()
 
 from lib.models import Author
 from blogs.models import Blog, Tag
+
+
+markdown_dirs = '/home/test/markdown_to_html'
 
 
 def _iterate_dirs(markdown_dirs, logger):
@@ -49,14 +55,26 @@ def _extract_blog_meta(blog_file, logger):
 	return (title, pub_date, category_names)
 
 def _transfer_markdown_to_html(blog_file, logger):
-	content = subprocess.check_output("pandoc -f markdown -t html %s" % blog_file, shell=True)
+	return subprocess.check_output("pandoc -f markdown -t html %s" % blog_file, shell=True)
+
+def _rrplace(s, old, new, occurrence):
+	li = s.rsplit(old, occurrence)
+	return new.join(li)
+
+def _get_blog_content(blog_file, logger):
+	html_file = _rrplace(blog_file, 'markdown', 'html', 1)
+	with open(html_file, 'r') as fp_r:
+		content = fp_r.read()
 	return content
 
 
 if __name__ == '__main__':
 
-	Blog.objects.all().delete()
-	Tag.objects.all().delete()
+	import argparse
+	parser = argparse.ArgumentParser(prog='load_blogs', description='load blogs',)
+	parser.add_argument('-f', '--file', type=str, help='only add single blog')
+	args = parser.parse_args()
+	print args.file
 
 	basepath = os.getcwd()
 	logging.basicConfig(filename=os.path.join(basepath, 'logs/transfer_pandoc_markdown_to_html.log'), level=logging.DEBUG,
@@ -65,18 +83,38 @@ if __name__ == '__main__':
 		)
 	logger = logging.getLogger('TransferPandocMarkdownToHtml')
 
+	blogs = Blog.objects.all()
+	blog_names = []
+	[ blog_names.append(blog.title) for blog in blogs ]
+
+	if not args.file: # check all blogs and transfer
+		blog_files = _iterate_dirs(markdown_dirs, logger)
+	else:
+		blog_files = [ os.path.join(markdown_dirs, args.file) ]
+
 	author = Author.objects.get(name=u'褚桐')
 	cur_time=time.strftime("%Y-%m-%d", time.localtime())
 
-	markdown_dirs = '/home/test/markdown_to_html'
-	blog_files = _iterate_dirs(markdown_dirs, logger)
-	#blog_files = [ os.path.join(markdown_dirs, '2016-08-20-tools-project.markdown') ]
-	for blog_file in blog_files:
+	print 'task run begins'
+	for idx, blog_file in enumerate(blog_files):
+		print idx, blog_file
+		if (not args.file) and ('2016-10-23' in blog_file):
+			continue
+
 		(title, pub_date, category_names) = _extract_blog_meta(blog_file, logger)
 		if not title:
 			logger.error('blog_file %s with no title defined' % blog_file)
 			continue
-		content = _transfer_markdown_to_html(blog_file, logger)
+
+		if title in blog_names:
+			logger.info('blog_file %s with title %s already defined' % (blog_file, title))
+			continue
+		print 'new added blog', title
+
+		if not args.file:
+			content = _transfer_markdown_to_html(blog_file, logger)
+		else:
+			content = _get_blog_content(blog_file, logger)
 
 		if not pub_date:
 			pub_date = cur_time
@@ -107,3 +145,4 @@ if __name__ == '__main__':
 		)
 		blog.save()
 		[ blog.tags.add(category) for category in categories ]
+	print 'task run ends'
